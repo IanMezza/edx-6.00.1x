@@ -18,7 +18,13 @@ class TestCodeEdX(unittest.TestCase):
         self.assertEqual(getGuessedWord('banana', ['o', 'x', 'u', 'd', 'a', 'q', 'f', 'p', 'v', 'j']), '_ a_ a_ a')
         self.assertEqual(getGuessedWord('coconut', []), '_ _ _ _ _ _ _ ')
         self.assertEqual(getGuessedWord('carrot', ['v', 'y', 'i', 't', 'f', 'k', 'j', 'c', 'r', 'u']), 'c_ rr_ t')
-
+        # getAvailableLetters tests
+        self.assertEqual(getAvailableLetters(['e', 'i', 'k', 'p', 'r', 's']), 'abcdfghjlmnoqtuvwxyz')
+        self.assertEqual(getAvailableLetters([]), 'abcdefghijklmnopqrstuvwxyz')
+        self.assertEqual(getAvailableLetters(['v', 'l', 't', 'j', 'h', 'm']), 'abcdefgiknopqrsuwxyz')
+        self.assertEqual(getAvailableLetters(['n', 'o']), 'abcdefghijklmpqrstuvwxyz')
+        self.assertEqual(getAvailableLetters(['v', 'e', 'k', 's', 'a']), 'bcdfghijlmnopqrtuwxyz')
+        self.assertEqual(getAvailableLetters(['u', 'g', 'm', 'b', 'h', 'v', 'n', 'q', 'p', 'z', 't', 'e']), 'acdfijklorswxy')
 
 # Execute unit testing
 if __name__ == '__main__':
