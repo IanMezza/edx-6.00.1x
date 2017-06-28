@@ -119,7 +119,45 @@ def hangman(secretWord):
 
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
+    # Saludo
+    print('Welcome to the game, Hangman!')
+    # Feedback word lenght
+    print('I am thinking of a word that is ' + str(len(secretWord)) + ' letters long.')
+    print('_____________')
+    # Loop for asking for user input
+    lettersGuessed = []
+    mistakesMade = 0
+    message = ''
+    while not isWordGuessed(secretWord, lettersGuessed):
+      availableLetters = getAvailableLetters(lettersGuessed)
+      print('You have ' + str(8-mistakesMade) + ' guesses left.')
+      print('Available letters: ' + availableLetters )
+      guessRaw = input(' Please guess a letter: ')
+      guess = guessRaw.lower()
+      # Validacion de entrada
+      if guess in availableLetters :
+        lettersGuessed.append(guess)
+        guessedWord = getGuessedWord(secretWord, lettersGuessed)
+        # Verifica si letra esta en palabra secreta
+        if guess in secretWord:
+          print('Good guess: ' + guessedWord)
+        else:
+          print('Oops! that letter is not in my word: ' + guessedWord)
+          mistakesMade += 1
+          if mistakesMade >= 8:
+            break
+      else:
+        print("Oops! You've already guessed that letter: " + guessedWord)
+      print('_____________')
+    # Verifica porque rompe el ciclo y checa si gana o pierde
+    if mistakesMade < 8:
+      message = 'Congratulations, you won!'
+      # print('Congratulations, you won!')
+    else:
+      message = 'Sorry, you ran out of guesses. The word was ' + secretWord + '.'
+      # print('Sorry, you ran out of guesses. The word was ' + secretWord + '.')
+    print(message)
+    return message
 
 
 
@@ -130,5 +168,5 @@ def hangman(secretWord):
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
 
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = 'banana'#chooseWord(wordlist).lower()
+hangman(secretWord)
