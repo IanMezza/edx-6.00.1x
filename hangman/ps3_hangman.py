@@ -50,7 +50,7 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE...
+    
     for eachLetter in secretWord:
       if eachLetter in lettersGuessed:
         pass
@@ -66,7 +66,14 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    # FILL IN YOUR CODE HERE...
+    
+    guessedWord = ''
+    for eachLetter in secretWord:
+      if eachLetter in lettersGuessed:
+        guessedWord += lettersGuessed[lettersGuessed.index(eachLetter)]
+      else:
+        guessedWord += '_ '
+    return guessedWord
 
 
 def getAvailableLetters(lettersGuessed):
